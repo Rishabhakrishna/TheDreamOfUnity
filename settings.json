@@ -1,0 +1,24 @@
+{
+    "customFileOrder.rules": {
+        "c:\\Users\\risha\\Downloads\\F1rstB1og\\data": {
+            "order": [
+                "index.html"
+            ],
+            "type": "manual"
+        },
+        "c:\\Users\\risha\\Downloads\\F1rstB1og": {
+            "order": [
+                "index.html",
+                "catalog.html",
+                "about.html",
+                "article.html",
+                "main.css",
+                "js",
+                "JSON",
+                ".vscode",
+                "images"
+            ],
+            "type": "manual"
+        }
+    }
+}

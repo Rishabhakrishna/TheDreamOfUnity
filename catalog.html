@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<div class="animated-gradient">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <title>All Articles</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="js/catalog.js"></script>
+</head>
+<body>
+    <form id="form1" name="catalog" onload="javascript:loadArticles()">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <h1>View All Articles</h1>
+
+    <!--Search Engine :)-->
+    <input type ="text"
+        type="'text"
+        id="searchBox"
+        placeholder="Seach by keyword..."
+        onkeyup="searchArticles()"
+    />
+    <div id="catalog"></div>
+    </form>
+</body>
+</html>
+</div>
