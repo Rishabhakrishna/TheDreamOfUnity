@@ -1,10 +1,94 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="en">
 <head>
- <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="main.css">
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article</title>
+  <link rel="stylesheet" href="main.css">
 </head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="about.html">About</a>
+    </nav>
+  <main>
+    <h1 id="article-title">Loading…</h1>
+    <p id="article-content">Please wait while the article loads.</p>
+  </main>
+
+  <script>
+    (function () {
+      function getQueryParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+      }
+
+      async function loadFromDataFile(id) {
+        try {
+          const res = await fetch('data/articles.json');
+          const list = await res.json();
+          return list.find(a => String(a.id) === String(id));
+        } catch (e) {
+          console.error('Error fetching data/articles.json', e);
+          return null;
+        }
+      }
+
+      function populate(article) {
+        const titleEl = document.getElementById('article-title');
+        const contentEl = document.getElementById('article-content');
+
+        if (!article) {
+          titleEl.textContent = 'Article not found';
+          contentEl.textContent = 'The requested article could not be found.';
+          return;
+        }
+
+        titleEl.textContent = article.title || '';
+
+        if (article.content && /<\/?[a-z][\s\S]*>/i.test(article.content)) {
+          contentEl.innerHTML = article.content;
+        } else {
+          contentEl.textContent = article.content || article.summary || '';
+        }
+      }
+
+      (async function init() {
+        const id = getQueryParam('id');
+        let article = null;
+
+        // If an id is provided, fetch the authoritative article from data file
+        if (id) {
+          article = await loadFromDataFile(id);
+          // If we found it, refresh the saved object with the fresh article so localStorage stays current
+          if (article) {
+            try {
+              localStorage.setItem('selectedArticle', JSON.stringify(article));
+            } catch (e) {
+              console.warn('Could not update localStorage with fetched article', e);
+            }
+          } else {
+            // fallback: if fetch fails to find it, try a saved item matching id
+            try {
+              const saved = localStorage.getItem('selectedArticle');
+              if (saved) {
+                const parsed = JSON.parse(saved);
+                if (String(parsed.id) === String(id)) article = parsed;
+              }
+            } catch (_) {}
+          }
+        } else {
+          // No id — use saved article if available
+          try {
+            const saved = localStorage.getItem('selectedArticle');
+            if (saved) article = JSON.parse(saved);
+          } catch (_) {}
+        }
+
+        populate(article);
+      })();
+    })();
+  </script>
+</body>
+</html>

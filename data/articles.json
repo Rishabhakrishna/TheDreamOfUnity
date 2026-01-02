@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "title": "Tribalism in the 21st Century",
+        "author": "Rishabhakrishna Narendranath",
+        "date": "2025-12-08",
+        "tags": ["internet", "tribalism", "polarization", "interaction"],
+        "summary": "A deep-dive into the impact social media and the internet as a whole makes on human interaction.",
+        "content": "Political Polarization. That is the name of the plague that affects nations all across the globe. A plague that increases the difficulty of cooperation in governments every day. "
+    },
+    {
+        "id": 2,
+        "title": "Good Ol' American Normalcy Bias",
+        "author": "Rishabhakrishna Narendranath",
+        "date": "2025-12-08",
+        "tags": ["cognitive", "american", "privilege", "weakness"],
+        "summary": "As Americans, we have become increasingly unaware of how bad living conditions are in certain countries outside the US.",
+        "content": "In the words of Dr. Lauren Braithwaite,"
+    },
+    {
+        "id": 3,
+        "title": "AI Data Centers and their Environmental Impact?",
+        "author": "Rishabhakrishna Narendranath",
+        "date": "2025-12-08",
+        "tags": ["AI", "Environment", "data", "impact"],
+        "summary": "That prompt you just entered into ChatGPT? It had to be processed somewhere",
+        "content": ""
+    },
+    {
+        "id": 4,
+        "title": "The Gentle Parenting Epidemic",
+        "author": "Rishabhakrishna Narendranath",
+        "date": "2025-12-08",
+        "tags": ["gentle", "parenting", "epidemic"],
+        "summary": "Ever heard of the term 'Ipad Kid'? Here's why it's a problem.",
+        "content": ""
+    }
+]

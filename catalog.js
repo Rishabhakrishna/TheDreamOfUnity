@@ -11,37 +11,52 @@ async function loadArticles() {
 }
 
 function displayArticles(articles) {
-        const catalogDiv = document.getElementById('catalog');
-        catalogDiv.innerHTML = '';
+    const catalogDiv = document.getElementById('catalog');
+    if (!catalogDiv) return;
+    catalogDiv.innerHTML = '';
 
-        if (articles.length === 0) {
-            catalogDiv.innerHTML = '<p>No matching articles found.</p>';
-            return;
-        }
+    if (articles.length === 0) {
+        catalogDiv.innerHTML = '<p>No matching articles found.</p>';
+        return;
+    }
 
-        articles.forEach(article => {
-            const articleDiv = document.createElement('div');
-            articleDiv.classList.add("article-card");
+    articles.forEach(article => {
+        const articleDiv = document.createElement('div');
+        articleDiv.classList.add("article-card");
 
-            articleDiv.innerHTML = `
+        articleDiv.innerHTML = `
             <h2>${article.title}</h2>
             <p><em>by ${article.author} * ${article.date}</em></p>
             <p>${article.summary}</p>
             <a href="article.html?id=${article.id}">Read More</a>
-            `;
+        `;
 
-            catalogDiv.appendChild(articleDiv);
-        });
-    } function searchArticles() {
-        const query = document.getElementById('searchBox').value.toLowerCase();
+        const readMoreLink = articleDiv.querySelector('a');
+        if (readMoreLink) {
+            readMoreLink.addEventListener('click', () => {
+                try {
+                    localStorage.setItem('selectedArticle', JSON.stringify(article));
+                } catch (e) {
+                    console.warn('Could not save selected article to localStorage', e);
+                }
+            });
+        }
 
-        const filtered = allArticles.filter(article =>
-            article.title.toLowerCase().includes(query) ||
-            article.author.toLowerCase().includes(query) ||
-            article.tags.some(tag => tag.toLowerCase().includes(query)) ||
-            article.content.toLowerCase().includes(query)
-        );
-    
+        catalogDiv.appendChild(articleDiv);
+    });
+}
+
+function searchArticles() {
+    const box = document.getElementById('searchBox');
+    const query = box ? box.value.toLowerCase() : '';
+
+    const filtered = allArticles.filter(article =>
+        (article.title && article.title.toLowerCase().includes(query)) ||
+        (article.author && article.author.toLowerCase().includes(query)) ||
+        (article.tags && article.tags.some(tag => tag.toLowerCase().includes(query))) ||
+        (article.content && article.content.toLowerCase().includes(query))
+    );
+
     displayArticles(filtered);
 }
 
