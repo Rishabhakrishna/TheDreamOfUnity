@@ -1,28 +1,51 @@
 @font-face {
     font-family: 'Indian Poker'; /* A name you choose to reference this font later */
-    src: url('C:\Users\risha\Downloads\IndianPoker-AR3L.ttf') format('ttf');
-    font-weight: normal; 
-    font-style: normal; 
+    src: url('C:\\Users\\risha\\Downloads\\IndianPoker-AR3L.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+} 
+
+:root {
+    --max-width: 1200px;
+    --gap: 1rem;
+    --accent: #fabf7b;
 }
 
-h1{
-    font-family: Indian Poker;
-    font-size:75px ;
-    color:#080808 ;
-    text-align:center ;
-    margin: top 10px;
-    margin: bottom 25px;
+*, *::before, *::after {
+    box-sizing: border-box;
 }
+
+body {
+    font-family: 'Indian Poker';
+    font-size: 16px;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+} 
+
+h1{
+    font-family: 'Indian Poker';
+    font-size: clamp(1.8rem, 4vw, 4.5rem);
+    color: #080808;
+    text-align: center;
+    margin-top: 0.625rem;
+    margin-bottom: 1.25rem;
+} 
 .section {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    justify-content:space-between;
+    justify-content: space-between;
     flex-wrap: wrap;
-    gap: 1px;
-    padding: 10px;
-}
+    gap: var(--gap);
+    padding: 1rem;
+} 
 .section .text{
     flex: 1;
     text-align: center;
@@ -39,52 +62,58 @@ h1{
     }
 }
 h2 {
-    font-family: Indian Poker;
-    font-size:size 50px ;
-    color:#080808 ;
-    text-align:center ;
-    margin: top 10px;
-    margin: bottom 25px;
-}
+    font-family: 'Indian Poker';
+    font-size: clamp(1.25rem, 3vw, 3rem);
+    color: #080808;
+    text-align: center;
+    margin-top: 0.625rem;
+    margin-bottom: 1.25rem;
+} 
 
 .self {
     display: flex;
     align-items: center;
-    gap: 20px;
-}
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+} 
 
 h4 {
     text-align: center;
-    font-size: 45px;
-    background-color: #fabf7b;
-    border: 5px #000;
-}
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
+    background-color: var(--accent);
+    border: 2px solid #000;
+    padding: 0.5rem 1rem;
+} 
 
 #rn07 {
-    background-color: #fabf7b;
-    padding: 15px;
+    background-color: var(--accent);
+    padding: 1rem;
     border: 1px solid #5e0000;
-    text-align:center ;
-    font-family: Indian Poker;
-    font-size: 20px ;
-}
+    text-align: center;
+    font-family: 'Indian Poker';
+    font-size: clamp(0.9rem, 1.6vw, 1.25rem);
+} 
 
 #signature {
-    background-color: #fabf7b;
-    padding: 15px;
+    background-color: var(--accent);
+    padding: 1rem;
     border: 1px solid #5e0000;
-    text-align:center ;
+    text-align: center;
     font-weight: bold;
     font-style: italic;
-}
+    font-size: clamp(0.9rem, 1.6vw, 1.25rem);
+} 
 
 .self img {
     max-width: 100%;
-    width: 250px;
-    height: auto ;
-    padding: 20px;
-    margin: 10px 10px;
-}
+    width: clamp(120px, 18vw, 250px);
+    height: auto;
+    padding: 1rem;
+    margin: 0.5rem;
+    display: block;
+} 
 
 .IntroP {
     font-weight: bold;
@@ -92,14 +121,14 @@ h4 {
     text-align:center ;
 }
 h3 {
-    font-family: Indian Poker;
-    font-size: 15px ;
-    color:#080808 ;
-    text-align:center ;
-    margin: top 25px;
-    margin: bottom 25px;
+    font-family: 'Indian Poker';
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #080808;
+    text-align: center;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
     text-decoration-line: underline;
-}
+} 
 #MainP {
     background-color: #fabf7b;
     padding: 15px;
@@ -107,14 +136,14 @@ h3 {
     text-align:center ;
 }
 footer {
-    background-color: #fabf7b;
-    border: #000 solid 1px;
-    padding: 15px;
-    text-align:center ;
-    margin-top: 1000px;
-    font-family: Indian Poker;
-    font-size: 20px;
-}
+    background-color: var(--accent);
+    border: 1px solid #000;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+    font-family: 'Indian Poker';
+    font-size: clamp(0.9rem, 2vw, 1.25rem);
+} 
 body {
     background: linear-gradient(
         -45deg,
@@ -141,19 +170,28 @@ body {
 
 
 nav {
+    margin-top: 15px;
     margin-right: 15px;
     text-decoration: none;
     color: #444;
-}
+    padding: 0 1rem; /* keep links from touching viewport edges */
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: flex-start;
+} 
 
 nav a {
-    color:#5e0000;
-    background-color: #fabf7b;
+    color: #5e0000;
+    background-color: var(--accent);
     border: 3px solid #000;
-    padding: 10px 20px;
+    padding: 0.5rem 1rem;
     text-decoration: none;
     display: inline-block;
-}
+    font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+    margin: 0 0.25rem; /* extra breathing room */
+    border-radius: 4px;
+} 
 nav a:hover {
     color: #000;
 }
@@ -177,23 +215,35 @@ nav a:hover {
     border-color: #000;
     border-style: double;
     background: #ffc47c;
-    padding: 25px 200px ;
+    padding: 1.25rem;
     color: #000;
     text-align: center;
-    margin: 10px;
-    text-shadow: 10px #000;
+    margin: 1rem;
+    text-shadow: none;
+    max-width: 100%;
+    width: 100%;
+    display: block;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 900px) {
     .article-card {
-        flex-direction: column;
-        flex-direction: row;
+        padding: 1rem;
+        margin: 0.75rem;
     }
 }
+
+@media (max-width: 480px) {
+    /* Respect device safe area insets on phones with notches */
+    nav {
+        padding-left: max(1rem, env(safe-area-inset-left));
+        padding-right: max(1rem, env(safe-area-inset-right));
+    }
+} 
 
 
 .article-card h2 {
     margin-bottom: 5px;
+    font-size: clamp(1.25rem, 3vw, 2rem);
 }
 
 .article-card p {
